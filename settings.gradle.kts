@@ -21,3 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Klivvr"
 include(":app")
+include(":features")
+include(":features:search")
+include(":components")
+include(":components:city")
+include(":core")

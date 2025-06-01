@@ -9,15 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.impactyn.klivvr"
+    namespace = "com.impactyn.city"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.impactyn.klivvr"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -25,10 +21,6 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
     compileOptions {
@@ -38,14 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
-
-    api(project(":features:search"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -69,7 +56,4 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.work.manager)
     kapt(libs.hilt.android.compiler)
-
-
-
 }
