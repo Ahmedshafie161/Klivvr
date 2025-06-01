@@ -16,6 +16,8 @@ lifecycleRuntimeCompose = "2.8.7"
 ui = "1.7.6"
 work-manager = "2.7.0"
 navigationCompose = "2.8.0"
+core-splashscreen="1.0.1"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +49,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converte
 ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 work-manager = { module = "androidx.work:work-runtime-ktx", version.ref = "work-manager" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+core-splashscreen={group= "androidx.core",name="core-splashscreen",version.ref="core-splashscreen"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

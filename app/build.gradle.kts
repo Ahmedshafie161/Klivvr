@@ -49,6 +49,8 @@ dependencies {
     implementation(project(":features:search"))
     implementation(project(":components:city"))
 
+    implementation(libs.core.splashscreen)
+
     // Hilt
     api(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
