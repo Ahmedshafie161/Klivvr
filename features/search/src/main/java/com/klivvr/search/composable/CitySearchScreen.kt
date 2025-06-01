@@ -31,21 +31,30 @@ fun CitySearchScreen(
     val focusRequester = remember { FocusRequester() }
 
 
-    Column(Modifier.fillMaxSize().background(CustomTheme.colors.LightGray_2).systemBarsPadding()) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(CustomTheme.colors.LightGray_2)
+            .systemBarsPadding()
+    ) {
         when (val uiState = state.value) {
             is CitySearchState.Loading -> LoadingScreen()
             is CitySearchState.Empty -> EmptyScreen()
             is CitySearchState.Data -> {
                 Text(
-                    modifier = Modifier.wrapContentSize().padding(start = 10.dp),
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .padding(start = 10.dp),
                     textAlign = TextAlign.Start,
                     text = "City Search",
                     style = CustomTheme.typography.headlineLarge
                 )
                 Text(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().padding(top = 15.dp),
                     textAlign = TextAlign.Center,
-                    text = "${uiState.filteredCities.count()} cities"
+                    text = "${uiState.filteredCities.count()} cities",
+                    style = CustomTheme.typography.labelMedium,
+                    color = CustomTheme.colors.LightGray_4
                 )
 
                 CityList(modifier = Modifier
@@ -62,7 +71,6 @@ fun CitySearchScreen(
                     focusRequester = focusRequester,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 5.dp)
                         .imePadding()
                 )
             }
