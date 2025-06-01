@@ -87,7 +87,7 @@ fun CityListItem(modifier: Modifier = Modifier, city: CityUiModel, onClick: () -
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
                 Text(
-                    text = "${city.coordinates.latitude}, ${city.coordinates.longitude}",
+                    text = "${city.coordinates.longitude} , ${city.coordinates.latitude}",
                     style = CustomTheme.typography.labelMedium,
                     color = CustomTheme.colors.Gray
                 )

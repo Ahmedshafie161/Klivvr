@@ -7,12 +7,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.NonRestartableComposable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.klivvr.NavRoutes.CitySearch
+import com.klivvr.core.commonUi.navToGoogleMaps
 import com.klivvr.search.composable.CitySearchScreen
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -26,6 +28,7 @@ fun KlivvrNavHost( startDestination: String = CitySearch) {
         modifier = Modifier,
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
     ) {
+        val context = LocalContext.current
         NavHost(
             modifier = Modifier.semantics { testTagsAsResourceId = true },
             navController = navController,
@@ -34,7 +37,7 @@ fun KlivvrNavHost( startDestination: String = CitySearch) {
             composable(CitySearch) {
                 CitySearchScreen(
                     onMapRequested = { city ->
-                        // navController.navigate("${NavRoutes.Map}/${city.id}")
+                        context.navToGoogleMaps(city.coordinates.latitude, city.coordinates.longitude)
                     }
                 )
             }
