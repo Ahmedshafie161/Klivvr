@@ -17,7 +17,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.klivvr.core.commonUi.LoadingScreen
+import com.klivvr.core.commonUi.composables.EmptyScreen
+import com.klivvr.core.commonUi.composables.LoadingScreen
 import com.klivvr.core.designSystem.CustomTheme
 import com.klivvr.search.CitySearchState
 import com.klivvr.search.CitySearchViewModel

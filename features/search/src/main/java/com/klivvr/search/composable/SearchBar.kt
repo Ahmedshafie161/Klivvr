@@ -29,7 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.klivvr.core.commonUi.TextInputField
+import com.klivvr.core.commonUi.composables.TextInputField
 import com.klivvr.core.designSystem.CustomTheme
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)

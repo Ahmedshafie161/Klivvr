@@ -1,4 +1,4 @@
-package com.klivvr.core.commonUi
+package com.klivvr.core.commonUi.composables
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
