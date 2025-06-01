@@ -1,4 +1,4 @@
-package com.impactyn.klivvr
+package com.klivvr
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

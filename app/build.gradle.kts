@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.impactyn.klivvr"
+    namespace = "com.klivvr"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.impactyn.klivvr"
+        applicationId = "com.klivvr"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -45,29 +45,17 @@ android {
 
 dependencies {
 
-    api(project(":features:search"))
+    implementation(project(":core"))
+    implementation(project(":features:search"))
+    implementation(project(":components:city"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    implementation (libs.ui)
-    implementation (libs.androidx.lifecycle.viewmodel.compose)
     // Hilt
-    implementation(libs.hilt.android)
+    api(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-    implementation(libs.androidx.hilt.work)
+    api(libs.androidx.hilt.work)
     kapt(libs.androidx.hilt.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.work.manager)
+    api(libs.androidx.hilt.navigation.compose)
+    api(libs.work.manager)
     kapt(libs.hilt.android.compiler)
 
 

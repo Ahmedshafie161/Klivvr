@@ -1,0 +1,68 @@
+package com.klivvr.search
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.klivvr.search.model.CityUiModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class CitySearchViewModel @Inject constructor(
+    private val cityRepository: CityRepository
+) : ViewModel() {
+
+    private val _uiState = MutableStateFlow<CitySearchState>(CitySearchState.Loading)
+    val uiState: StateFlow<CitySearchState> = _uiState.asStateFlow()
+
+    private lateinit var citySearcher: CitySearcher
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            val cities = cityRepository.getCities()
+
+            if (cities.isEmpty()) {
+                _uiState.value = CitySearchState.Empty
+            } else {
+                citySearcher = CitySearcher(cities)
+                _uiState.value = CitySearchState.Data(
+                    cities = cities,
+                    filteredCities = cities,
+                    searchQuery = "",
+                    selectedCity = null
+                )
+            }
+        }
+    }
+
+    fun filterCities(query: String) {
+        val currentState = _uiState.value
+        if (currentState !is CitySearchState.Data) return
+
+        if (query.isEmpty()) {
+            _uiState.value = currentState.copy(
+                searchQuery = query,
+                filteredCities = currentState.cities
+            )
+        } else {
+            viewModelScope.launch(Dispatchers.Default) {
+                val filtered = citySearcher.search(query)
+                _uiState.value = currentState.copy(
+                    searchQuery = query,
+                    filteredCities = filtered
+                )
+            }
+        }
+    }
+
+    fun onCitySelected(city: CityUiModel) {
+        val currentState = _uiState.value
+        if (currentState is CitySearchState.Data) {
+            _uiState.value = currentState.copy(selectedCity = city)
+        }
+    }
+}

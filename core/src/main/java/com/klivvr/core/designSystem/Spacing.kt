@@ -1,4 +1,4 @@
-package com.impactyn.core.designSystem
+package com.klivvr.core.designSystem
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf

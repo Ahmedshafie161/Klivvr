@@ -1,4 +1,4 @@
-package com.impactyn.core.designSystem
+package com.klivvr.core.designSystem
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color

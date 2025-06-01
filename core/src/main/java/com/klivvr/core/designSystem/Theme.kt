@@ -1,4 +1,4 @@
-package com.impactyn.core.designSystem
+package com.klivvr.core.designSystem
 
 import android.app.Activity
 import android.graphics.Color

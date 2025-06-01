@@ -1,7 +1,7 @@
 import org.gradle.kotlin.dsl.android
 
 plugins {
-    alias(libs.plugins.android.application)
+    id ("com.android.library")
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.dagger.hilt.android")
@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.impactyn.city"
+    namespace = "com.klivvr.city"
     compileSdk = 34
 
     defaultConfig {
@@ -33,27 +33,15 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    implementation (libs.ui)
-    implementation (libs.androidx.lifecycle.viewmodel.compose)
     // Hilt
-    implementation(libs.hilt.android)
+    api(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-    implementation(libs.androidx.hilt.work)
+    api(libs.androidx.hilt.work)
     kapt(libs.androidx.hilt.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.work.manager)
+    api(libs.androidx.hilt.navigation.compose)
+    api(libs.work.manager)
     kapt(libs.hilt.android.compiler)
 }
