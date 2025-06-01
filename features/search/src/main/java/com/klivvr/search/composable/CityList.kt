@@ -67,39 +67,3 @@ fun ColumnScope.CityList(
     }
 }
 
-@Composable
-fun CityListItem(modifier: Modifier = Modifier, city: CityUiModel, onClick: () -> Unit) {
-    Card(
-        modifier = modifier, onClick = onClick, colors = CardDefaults.cardColors(
-            containerColor = Color.White
-        )
-    ) {
-        Row (modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically){
-            countryFlags[city.countryCode]?.let {
-                Box(
-                    modifier = Modifier
-                        .size(80.dp)
-                        .clip(CircleShape)
-                        .background(CustomTheme.colors.LightGray_1),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Image(painterResource(it), null, modifier = Modifier.size(40.dp))
-                }
-            }
-            Column(
-                modifier = Modifier.padding(16.dp)
-            ) {
-                Text(
-                    text = "${city.name}, ${city.countryCode}",
-                    style = CustomTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
-                    modifier = Modifier.padding(bottom = 4.dp)
-                )
-                Text(
-                    text = "${city.coordinates.longitude} , ${city.coordinates.latitude}",
-                    style = CustomTheme.typography.labelMedium,
-                    color = CustomTheme.colors.Gray
-                )
-            }
-        }
-    }
-}
