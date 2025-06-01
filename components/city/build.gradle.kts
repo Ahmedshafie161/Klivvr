@@ -44,4 +44,10 @@ dependencies {
     api(libs.androidx.hilt.navigation.compose)
     api(libs.work.manager)
     kapt(libs.hilt.android.compiler)
+
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // Kotlin Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
 }

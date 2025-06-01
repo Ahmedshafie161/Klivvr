@@ -1,15 +1,25 @@
 package com.klivvr.search.model
+import com.klivvr.city.CityDataModel
+import com.klivvr.city.CoordDataModel
 import com.klivvr.core.R
 
 data class CityUiModel(
     val name: String,
     val countryCode: String,
     val id: Long,
-    val coordinates: Coord,
-    val flagResId: Int? = null
+    val coordinates: CoordUiModel,
 )
-
-data class Coord(val longitude: Double, val latitude: Double)
+fun CityDataModel.toCityUiModel() = CityUiModel(
+    name = name,
+    countryCode = countryCode,
+    id = id,
+    coordinates = coordinates.toCoordUiModel()
+)
+fun CoordDataModel.toCoordUiModel() = CoordUiModel(
+    latitude = latitude,
+    longitude = longitude
+)
+data class CoordUiModel(val longitude: Double, val latitude: Double)
 val countryFlags = mapOf(
     "AF" to R.drawable.af,
     "AL" to R.drawable.al,

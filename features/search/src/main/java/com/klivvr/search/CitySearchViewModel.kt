@@ -2,7 +2,9 @@ package com.klivvr.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.klivvr.city.CityRepository
 import com.klivvr.search.model.CityUiModel
+import com.klivvr.search.model.toCityUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,7 +25,7 @@ class CitySearchViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val cities = cityRepository.getCities()
+            val cities = cityRepository.getCities().map { it.toCityUiModel() }
 
             if (cities.isEmpty()) {
                 _uiState.value = CitySearchState.Empty
