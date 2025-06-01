@@ -8,6 +8,10 @@ import androidx.compose.ui.unit.sp
 
 
 data class CustomTypography(
+    val headlineLarge: TextStyle = TextStyle(
+        fontSize = 48.sp,
+        fontWeight = FontWeight.Bold,
+    ),
     val headlineMedium: TextStyle = TextStyle(
         fontSize = 20.sp,
         fontWeight = FontWeight.SemiBold,

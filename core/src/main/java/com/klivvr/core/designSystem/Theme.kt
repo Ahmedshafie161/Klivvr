@@ -23,21 +23,21 @@ import androidx.core.view.WindowCompat
 private val DarkColorScheme = darkColorScheme(
     primary = Black,
     secondary = White,
-    tertiary = AbsColor.LightGray,
+    tertiary = AbsColor.Gray,
     background = Black,
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = Black,
     secondary = White,
-    tertiary = AbsColor.LightGray,
+    tertiary = AbsColor.Gray,
     background = Black,
-    surface = AbsColor.LightGray,
+    surface = AbsColor.Gray,
     onPrimary = Black,
-    onSecondary = AbsColor.LightGray,
+    onSecondary = AbsColor.Gray,
     onTertiary = White,
-    onBackground = AbsColor.LightGray,
-    onSurface = AbsColor.LightGray,
+    onBackground = AbsColor.Gray,
+    onSurface = AbsColor.Gray,
 )
 
 object CustomTheme {

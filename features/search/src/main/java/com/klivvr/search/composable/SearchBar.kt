@@ -1,18 +1,12 @@
 package com.klivvr.search.composable
 
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.with
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -20,8 +14,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -56,59 +48,48 @@ fun SearchBar(
         }
     }
 
-    AnimatedContent(
-        targetState = isFocused,
-        transitionSpec = { fadeIn() with fadeOut() }, label = ""
-    ) { focused ->
-        if (true) {
+    Surface(
+        modifier = modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .clickable { isFocused = true },
+        color = Color.White,
+    ) {
+        Row(
+            modifier = Modifier.wrapContentSize(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             TextInputField(
                 text = query,
-                placeholder = "Search cities...",
+                placeholder = "Search...",
                 onValueChange = onQueryChange,
-                modifier = modifier
-                    .height(56.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding( 10.dp)
                     .focusRequester(focusRequester)
                     .onFocusChanged { isFocused = it.isFocused },
+                leadingIcon = {
+                    Icon(Icons.Default.Search, contentDescription = "Search")
+                } ,
                 trailingIcon = {
-                    IconButton(onClick = { if (query.isEmpty()) isFocused = false }) {
-                        Icon(Icons.Default.Close, contentDescription = "Close")
+                    if (query.isNotEmpty()) {
+                        IconButton(onClick = { onQueryChange("") }) {
+                            Icon(Icons.Default.Close, contentDescription = "Clear")
+                        }
                     }
                 },
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Search,
-                keyboardActions = KeyboardActions.Default,
                 textColor = Color.Black,
-                disabledTextColor = Color.Gray,
-                backgroundColor = Color.Transparent,
-                borderFocusColor = Color.Black,
-                borderUnFocusColor = Color.Black,
+                backgroundFocusColor = Color.White,
+                borderFocusColor = Color.White,
+                borderUnFocusColor = CustomTheme.colors.LightGray_3 ,
+                backgroundUnFocusColor = CustomTheme.colors.LightGray_3,
                 textStyle = CustomTheme.typography.labelMedium,
-                placeHolderStyle = CustomTheme.typography.labelMedium,
-                placeholderColor = Color.Black,
-                labelColor = Color.Black,
-                cursorColor = Color.Black,
+                placeHolderStyle = CustomTheme.typography.labelMedium.copy(color = CustomTheme.colors.Gray),
                 singleLine = true,
+                cursorColor = CustomTheme.colors.Dark_Gray
             )
-        } else {
-            Surface(
-                modifier = modifier
-                    .height(56.dp)
-                    .clickable { isFocused = true },
-                shape = RoundedCornerShape(20),
-                color = Color.LightGray,
-            ) {
-                Row(
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(Icons.Default.Search, contentDescription = "Search")
-                    Spacer(Modifier.width(8.dp))
-                    Text(
-                        "Search cities...",
-                        color = CustomTheme.colors.LightGray.copy(alpha = 0.7f)
-                    )
-                }
-            }
         }
     }
 }
