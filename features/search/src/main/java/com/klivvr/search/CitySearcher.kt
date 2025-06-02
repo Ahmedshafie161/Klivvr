@@ -3,11 +3,11 @@ package com.klivvr.search
 import com.klivvr.search.model.CityUiModel
 import kotlin.math.min
 
-/*
-data expected to be sorted by name
- */
+
 class CitySearcher(private val sortedCities: List<CityUiModel>) {
-    private val lowerNames = sortedCities.map { it.name.lowercase() }
+    private val lowerNames = sortedCities
+        .sortedWith(compareBy({ it.name.lowercase() }, { it.countryCode }))
+        .map { it.name.lowercase() }
 
     fun search(prefix: String): List<CityUiModel> {
         if (prefix.isEmpty()) return sortedCities

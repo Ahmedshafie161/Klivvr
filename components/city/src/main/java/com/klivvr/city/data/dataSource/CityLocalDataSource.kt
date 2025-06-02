@@ -22,6 +22,6 @@ internal class CityLocalDataSource @Inject constructor(@ApplicationContext priva
                 countryCode = city.countryCode,
                 coordinates = city.coordinates,
             )
-        }.sortedWith(compareBy({ it.name.lowercase() }, { it.countryCode }))
+        }
     }
 }
