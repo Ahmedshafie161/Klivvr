@@ -16,14 +16,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.klivvr.core.designSystem.CustomTheme
 
 @Composable
 fun TextInputField(
     text: String,
     label: String? = null,
-    labelHeight: Dp = 5.dp,
+    labelHeight: Dp = CustomTheme.sizing.xSmall,
     placeholder: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier.fillMaxWidth(),

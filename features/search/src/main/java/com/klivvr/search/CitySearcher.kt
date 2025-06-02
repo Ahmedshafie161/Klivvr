@@ -3,7 +3,7 @@ package com.klivvr.search
 import com.klivvr.search.model.CityUiModel
 import kotlin.math.min
 
-class CitySearcher(val sortedCities: List<CityUiModel>) {
+class CitySearcher(private val sortedCities: List<CityUiModel>) {
     private val lowerNames = sortedCities.map { it.name.lowercase() }
 
     fun search(prefix: String): List<CityUiModel> {

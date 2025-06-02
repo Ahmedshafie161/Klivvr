@@ -11,15 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.klivvr.core.R
+import com.klivvr.core.designSystem.CustomTheme
 
 @Composable
 fun EmptyScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(32.dp), contentAlignment = Alignment.Center
+            .padding(CustomTheme.sizing.small),
+        contentAlignment = Alignment.Center
     ) {
         Text(
             text = stringResource(R.string.no_cities_found),
