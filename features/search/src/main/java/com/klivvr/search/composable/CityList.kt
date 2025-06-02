@@ -14,7 +14,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.klivvr.core.designSystem.CustomTheme
 import com.klivvr.search.model.CityUiModel
@@ -50,7 +49,7 @@ fun ColumnScope.CityList(
                 val strokeWidth = lineThickness.toPx()
                 val x = lineStartPadding.toPx()
                 val yStart = 0f
-                val yEnd = size.height
+                val yEnd = size.height-10.dp.toPx()
 
                 drawLine(
                     color = lineColor,
@@ -61,7 +60,7 @@ fun ColumnScope.CityList(
                 drawCircle(
                     color = lineColor,
                     radius = circleRadius.toPx(),
-                    center = Offset(x, size.height - circleRadius.toPx())
+                    center = Offset(x, size.height-10.dp.toPx() - circleRadius.toPx())
                 )
             }, contentPadding = PaddingValues(
             top = CustomTheme.spacing.spacerM, bottom = CustomTheme.spacing.spacerM

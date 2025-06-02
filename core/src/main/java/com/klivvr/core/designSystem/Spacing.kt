@@ -7,7 +7,7 @@ import androidx.compose.ui.unit.dp
 
 @Immutable
 data class AbsSpacing(
-    val spacerL: Dp = 30.dp,
+    val spacerL: Dp = 35.dp,
     val spacerM: Dp = 16.dp,
     val spacer: Dp = 10.dp,
     val cardPadding: Dp = 16.dp,
