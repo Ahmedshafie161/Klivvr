@@ -30,12 +30,12 @@ import com.klivvr.search.model.CityUiModel
 
 @Composable
 fun CitySearchScreen(
-    viewModel: CitySearchViewModel = hiltViewModel(), onMapRequested: (CityUiModel) -> Unit
+    viewModel: CitySearchViewModel = hiltViewModel(),
+    onMapRequested: (CityUiModel) -> Unit
 ) {
     val state = viewModel.uiState.collectAsStateWithLifecycle()
     val focusRequester = remember { FocusRequester() }
     val focusManager = LocalFocusManager.current
-
 
     Column(
         Modifier
@@ -44,12 +44,17 @@ fun CitySearchScreen(
             .systemBarsPadding()
             .pointerInput(Unit) {
                 detectTapGestures(onTap = {
-                    focusManager.clearFocus() // clears focus when tapping anywhere
+                    focusManager.clearFocus()
                 })
-            }) {
+            }
+    ) {
         when (val uiState = state.value) {
             is CitySearchState.Loading -> LoadingScreen()
-            is CitySearchState.Empty -> EmptyScreen()
+            is CitySearchState.Empty ->  EmptyScreen(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            )
             is CitySearchState.Data -> {
                 Text(
                     modifier = Modifier
@@ -69,26 +74,35 @@ fun CitySearchScreen(
                     color = CustomTheme.colors.LightGray_4
                 )
 
-                CityList(modifier = Modifier
-                    .padding(horizontal = CustomTheme.spacing.spacerM)
-                    .fillMaxSize()
-                    .weight(1f),
+                CityList(
+                    modifier = Modifier
+                        .padding(horizontal = CustomTheme.spacing.spacerM)
+                        .fillMaxSize()
+                        .weight(1f),
                     groupedCities = uiState.filteredCities,
                     onCitySelected = { city ->
                         viewModel.onCitySelected(city)
                         onMapRequested(city)
-                    })
-                SearchBar(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .imePadding(),
-                    query = uiState.searchQuery,
-                    onQueryChange = viewModel::filterCities,
-                    focusRequester = focusRequester,
+                    }
                 )
             }
         }
+
+        val uiState = state.value
+        if (uiState !is CitySearchState.Loading) {
+            val query = when (uiState) {
+                is CitySearchState.Data -> uiState.searchQuery
+                is CitySearchState.Empty -> uiState.query
+                else -> ""
+            }
+            SearchBar(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .imePadding(),
+                query = query,
+                onQueryChange = viewModel::filterCities,
+                focusRequester = focusRequester,
+            )
+        }
     }
 }
-
-

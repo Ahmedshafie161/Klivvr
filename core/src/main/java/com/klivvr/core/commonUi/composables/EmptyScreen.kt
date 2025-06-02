@@ -1,7 +1,6 @@
 package com.klivvr.core.commonUi.composables
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -15,10 +14,9 @@ import com.klivvr.core.R
 import com.klivvr.core.designSystem.CustomTheme
 
 @Composable
-fun EmptyScreen() {
+fun EmptyScreen(modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = modifier
             .padding(CustomTheme.sizing.small),
         contentAlignment = Alignment.Center
     ) {

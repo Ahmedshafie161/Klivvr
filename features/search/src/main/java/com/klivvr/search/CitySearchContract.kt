@@ -14,5 +14,6 @@ sealed interface CitySearchState {
         val selectedCity: CityUiModel? = null,
     ) : CitySearchState
 
-    data object Empty : CitySearchState
+    data class Empty(val query: String) : CitySearchState
 }
+
