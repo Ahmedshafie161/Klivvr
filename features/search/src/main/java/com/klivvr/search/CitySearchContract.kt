@@ -6,10 +6,11 @@ sealed interface CitySearchState {
     data object Loading : CitySearchState
 
     data class Data(
-        val cities: List<CityUiModel>,
-        val filteredCities: List<CityUiModel>,
+        val cities: Map<Char, List<CityUiModel>>,
+        val filteredCities: Map<Char, List<CityUiModel>>,
         val searchQuery: String,
-        val selectedCity: CityUiModel? = null
+        val cityCounter: Int,
+        val selectedCity: CityUiModel? = null,
     ) : CitySearchState
 
     data object Empty : CitySearchState

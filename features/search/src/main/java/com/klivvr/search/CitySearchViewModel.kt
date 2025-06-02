@@ -3,6 +3,7 @@ package com.klivvr.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.klivvr.city.CityRepository
+import com.klivvr.core.util.groupByFirstLetter
 import com.klivvr.search.model.CityUiModel
 import com.klivvr.search.model.toCityUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,11 +32,13 @@ class CitySearchViewModel @Inject constructor(
                 _uiState.value = CitySearchState.Empty
             } else {
                 citySearcher = CitySearcher(cities)
+                val grouped = cities.groupByFirstLetter { it.name }
                 _uiState.value = CitySearchState.Data(
-                    cities = cities,
-                    filteredCities = cities,
+                    cities = grouped,
+                    filteredCities = grouped,
                     searchQuery = "",
-                    selectedCity = null
+                    selectedCity = null,
+                    cityCounter = cities.size
                 )
             }
         }
@@ -46,16 +49,16 @@ class CitySearchViewModel @Inject constructor(
         if (currentState !is CitySearchState.Data) return
 
         if (query.isEmpty()) {
-            _uiState.value = currentState.copy(
-                searchQuery = query,
-                filteredCities = currentState.cities
-            )
+            _uiState.value = currentState.copy(searchQuery = query,
+                filteredCities = currentState.cities,
+                cityCounter = currentState.cities.values.sumOf { it.size })
         } else {
             viewModelScope.launch(Dispatchers.Default) {
-                val filtered = citySearcher.search(query)
+                val result = citySearcher.search(query)
                 _uiState.value = currentState.copy(
                     searchQuery = query,
-                    filteredCities = filtered
+                    filteredCities = result.groupByFirstLetter { it.name },
+                    cityCounter = result.size
                 )
             }
         }

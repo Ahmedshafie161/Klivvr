@@ -53,7 +53,7 @@ fun CitySearchScreen(
                 Text(
                     modifier = Modifier.fillMaxWidth().padding(top = 15.dp),
                     textAlign = TextAlign.Center,
-                    text = "${uiState.filteredCities.count()} cities",
+                    text = "${uiState.cityCounter} cities",
                     style = CustomTheme.typography.labelMedium,
                     color = CustomTheme.colors.LightGray_4
                 )
@@ -61,7 +61,7 @@ fun CitySearchScreen(
                 CityList(modifier = Modifier
                     .fillMaxSize()
                     .weight(1f),
-                    cities = uiState.filteredCities,
+                    groupedCities = uiState.filteredCities,
                     onCitySelected = { city ->
                         viewModel.onCitySelected(city)
                         onMapRequested(city)
