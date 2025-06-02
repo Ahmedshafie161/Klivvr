@@ -18,7 +18,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.klivvr.core.designSystem.CustomTheme
 import com.klivvr.search.model.CityUiModel
 import com.klivvr.search.model.countryFlags
@@ -30,25 +29,32 @@ fun CityListItem(modifier: Modifier = Modifier, city: CityUiModel, onClick: () -
             containerColor = Color.White
         )
     ) {
-        Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.padding(CustomTheme.sizing.small_xL),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             countryFlags[city.countryCode]?.let {
                 Box(
                     modifier = Modifier
-                        .size(80.dp)
+                        .size(CustomTheme.sizing.medium)
                         .clip(CircleShape)
                         .background(CustomTheme.colors.LightGray_1),
                     contentAlignment = Alignment.Center
                 ) {
-                    Image(painterResource(it), null, modifier = Modifier.size(40.dp))
+                    Image(
+                        painterResource(it),
+                        null,
+                        modifier = Modifier.size(CustomTheme.sizing.small)
+                    )
                 }
             }
             Column(
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(CustomTheme.spacing.spacerM)
             ) {
                 Text(
                     text = "${city.name}, ${city.countryCode}",
                     style = CustomTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
-                    modifier = Modifier.padding(bottom = 4.dp)
+                    modifier = Modifier.padding(bottom = CustomTheme.spacing.padding)
                 )
                 Text(
                     text = "${city.coordinates.longitude} , ${city.coordinates.latitude}",

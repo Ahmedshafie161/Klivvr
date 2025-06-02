@@ -11,7 +11,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import com.klivvr.core.designSystem.CustomTheme
 import com.klivvr.search.model.CityUiModel
 import kotlin.collections.component1
 import kotlin.collections.component2
@@ -30,9 +30,9 @@ fun ColumnScope.CityList(
     }
 
     LazyColumn(
-        modifier = modifier,
-        contentPadding = PaddingValues(top = 16.dp, bottom = 16.dp),
-        state = columnState
+        modifier = modifier, contentPadding = PaddingValues(
+            top = CustomTheme.spacing.spacerM, bottom = CustomTheme.spacing.spacerM
+        ), state = columnState
     ) {
         groupedCities.forEach { (initial, cityGroup) ->
             stickyHeader {
@@ -41,9 +41,10 @@ fun ColumnScope.CityList(
             items(cityGroup) { city ->
                 CityListItem(modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 30.dp, vertical = 10.dp),
-                    city = city,
-                    onClick = { onCitySelected(city) })
+                    .padding(
+                        horizontal = CustomTheme.spacing.spacerL,
+                        vertical = CustomTheme.spacing.spacer
+                    ), city = city, onClick = { onCitySelected(city) })
             }
         }
     }

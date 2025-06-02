@@ -28,7 +28,6 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
 import com.klivvr.core.commonUi.composables.TextInputField
 import com.klivvr.core.designSystem.CustomTheme
 
@@ -56,8 +55,7 @@ fun SearchBar(
         color = Color.White,
     ) {
         Row(
-            modifier = Modifier.wrapContentSize(),
-            verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.wrapContentSize(), verticalAlignment = Alignment.CenterVertically
         ) {
             TextInputField(
                 text = query,
@@ -65,12 +63,12 @@ fun SearchBar(
                 onValueChange = onQueryChange,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding( 10.dp)
+                    .padding(CustomTheme.spacing.spacer)
                     .focusRequester(focusRequester)
                     .onFocusChanged { isFocused = it.isFocused },
                 leadingIcon = {
                     Icon(Icons.Default.Search, contentDescription = "Search")
-                } ,
+                },
                 trailingIcon = {
                     if (query.isNotEmpty()) {
                         IconButton(onClick = { onQueryChange("") }) {
@@ -83,7 +81,7 @@ fun SearchBar(
                 textColor = Color.Black,
                 backgroundFocusColor = Color.White,
                 borderFocusColor = Color.White,
-                borderUnFocusColor = CustomTheme.colors.LightGray_3 ,
+                borderUnFocusColor = CustomTheme.colors.LightGray_3,
                 backgroundUnFocusColor = CustomTheme.colors.LightGray_3,
                 textStyle = CustomTheme.typography.labelMedium,
                 placeHolderStyle = CustomTheme.typography.labelMedium.copy(color = CustomTheme.colors.Gray),

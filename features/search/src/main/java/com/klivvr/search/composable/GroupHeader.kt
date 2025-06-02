@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.klivvr.core.designSystem.CustomTheme
 
 @Composable
@@ -27,14 +26,14 @@ fun GroupHeader(modifier: Modifier = Modifier, initial: String) {
         modifier = modifier
             .wrapContentWidth()
             .fillMaxHeight()
-            .padding(start = 15.dp),
+            .padding(start = CustomTheme.spacing.spacerM),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         Box(
             Modifier
                 .wrapContentSize()
-                .defaultMinSize(60.dp, 60.dp)
+                .defaultMinSize(CustomTheme.sizing.small_L, CustomTheme.sizing.small_L)
                 .clip(CircleShape)
                 .background(Color.Gray), contentAlignment = Alignment.Center
         ) {
@@ -48,8 +47,8 @@ fun GroupHeader(modifier: Modifier = Modifier, initial: String) {
         }
         Box(
             modifier = Modifier
-                .width(2.dp)
-                .height(50.dp)
+                .width(CustomTheme.sizing.xSmall)
+                .height(CustomTheme.sizing.small_S)
                 .background(Color.Black)
         )
     }

@@ -53,7 +53,7 @@ fun CitySearchScreen(
                 Text(
                     modifier = Modifier
                         .wrapContentSize()
-                        .padding(start = 10.dp),
+                        .padding(start = CustomTheme.spacing.spacerM),
                     textAlign = TextAlign.Start,
                     text = "City Search",
                     style = CustomTheme.typography.headlineLarge
@@ -61,7 +61,7 @@ fun CitySearchScreen(
                 Text(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 15.dp),
+                        .padding(top = CustomTheme.spacing.spacerM),
                     textAlign = TextAlign.Center,
                     text = "${uiState.cityCounter} cities",
                     style = CustomTheme.typography.labelMedium,
