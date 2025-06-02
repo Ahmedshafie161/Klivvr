@@ -42,7 +42,6 @@ class CitySearchViewModelTest {
 
     @Test
     fun `filterCities filters by query`() = runTest(testDispatcher) {
-        // data must be sorted by name to works fine
         val sortedTestCities = testCities.sortedBy { it.name.lowercase() }
 
         `when`(getCitiesUseCase()).thenReturn(sortedTestCities)
