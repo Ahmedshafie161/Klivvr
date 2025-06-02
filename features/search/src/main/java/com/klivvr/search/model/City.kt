@@ -1,6 +1,7 @@
 package com.klivvr.search.model
-import com.klivvr.city.CityDataModel
-import com.klivvr.city.CoordDataModel
+
+import com.klivvr.city.domain.CityDomainModel
+import com.klivvr.city.domain.CoordDomainModel
 import com.klivvr.core.R
 
 data class CityUiModel(
@@ -9,17 +10,17 @@ data class CityUiModel(
     val id: Long,
     val coordinates: CoordUiModel,
 )
-fun CityDataModel.toCityUiModel() = CityUiModel(
-    name = name,
-    countryCode = countryCode,
-    id = id,
-    coordinates = coordinates.toCoordUiModel()
-)
-fun CoordDataModel.toCoordUiModel() = CoordUiModel(
-    latitude = latitude,
-    longitude = longitude
-)
 data class CoordUiModel(val longitude: Double, val latitude: Double)
+
+fun CityDomainModel.toCityUiModel() = CityUiModel(
+    name = name, countryCode = countryCode, id = id, coordinates = coordinates.toCoordUiModel()
+)
+
+fun CoordDomainModel.toCoordUiModel() = CoordUiModel(
+    latitude = latitude, longitude = longitude
+)
+
+
 val countryFlags = mapOf(
     "AF" to R.drawable.af,
     "AL" to R.drawable.al,

@@ -2,7 +2,7 @@ package com.klivvr.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.klivvr.city.CityRepository
+import com.klivvr.city.domain.GetCitiesUseCase
 import com.klivvr.core.util.groupByFirstLetter
 import com.klivvr.search.model.CityUiModel
 import com.klivvr.search.model.toCityUiModel
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CitySearchViewModel @Inject constructor(
-    private val cityRepository: CityRepository
+    private val getCitiesUseCase: GetCitiesUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<CitySearchState>(CitySearchState.Loading)
@@ -26,7 +26,7 @@ class CitySearchViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val cities = cityRepository.getCities().map { it.toCityUiModel() }
+            val cities = getCitiesUseCase.invoke().map { it.toCityUiModel() }
 
             if (cities.isEmpty()) {
                 _uiState.value = CitySearchState.Empty
