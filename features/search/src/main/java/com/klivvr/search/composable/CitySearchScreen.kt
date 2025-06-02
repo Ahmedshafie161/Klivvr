@@ -1,6 +1,7 @@
 package com.klivvr.search.composable
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -30,6 +33,7 @@ fun CitySearchScreen(
 ) {
     val state = viewModel.uiState.collectAsStateWithLifecycle()
     val focusRequester = remember { FocusRequester() }
+    val focusManager = LocalFocusManager.current
 
 
     Column(
@@ -37,6 +41,11 @@ fun CitySearchScreen(
             .fillMaxSize()
             .background(CustomTheme.colors.LightGray_2)
             .systemBarsPadding()
+            .pointerInput(Unit) {
+                detectTapGestures(onTap = {
+                    focusManager.clearFocus() // clears focus when tapping anywhere
+                })
+            }
     ) {
         when (val uiState = state.value) {
             is CitySearchState.Loading -> LoadingScreen()
