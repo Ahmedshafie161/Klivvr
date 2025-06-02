@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.Dp
 import com.klivvr.core.designSystem.CustomTheme
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.saveable.rememberSaveable
 
 @Composable
 fun TextInputField(
@@ -51,7 +52,7 @@ fun TextInputField(
     isEnabled: Boolean = true,
     isReadOnly: Boolean = false,
 ) {
-    var text by remember { mutableStateOf("") }
+    var text by rememberSaveable(text) { mutableStateOf(text) }
 
     Column {
         label?.let {
