@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         }
 
         lifecycleScope.launch {
-            delay(2000)
+            delay(50)
             keepSplashOnScreen = false
         }
     }
