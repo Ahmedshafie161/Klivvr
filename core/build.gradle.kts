@@ -1,4 +1,3 @@
-import org.gradle.kotlin.dsl.android
 
 plugins {
     id ("com.android.library")
@@ -58,4 +57,7 @@ dependencies {
     api(libs.androidx.hilt.navigation.compose)
     api(libs.work.manager)
     kapt(libs.hilt.android.compiler)
+    // kotlin collection
+    api(libs.kotlinx.collections.immutable)
+
 }
