@@ -70,6 +70,7 @@ fun CitySearchScreen(
                 )
 
                 CityList(modifier = Modifier
+                    .padding(horizontal = CustomTheme.spacing.spacerM)
                     .fillMaxSize()
                     .weight(1f),
                     groupedCities = uiState.filteredCities,

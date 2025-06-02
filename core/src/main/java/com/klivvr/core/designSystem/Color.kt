@@ -10,6 +10,8 @@ object AbsColor {
     val LightGray_2 = Color(0xFFf5f4f6)
     val LightGray_3 = Color(0xFFededed)
     val LightGray_4 = Color(0xFF525252)
+    val LightGray_5 = Color(0xFFbdbdbd)
+    val LightGray_6 = Color(0xFFbbbbbb)
 }
 
 val LocalAbsColor = compositionLocalOf { AbsColor }
