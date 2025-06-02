@@ -83,6 +83,5 @@ fun ColumnScope.CityList(
             }
         }
     }
-
 }
 

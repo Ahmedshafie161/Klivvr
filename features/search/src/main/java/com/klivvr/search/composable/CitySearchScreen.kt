@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.wrapContentSize
@@ -62,7 +63,7 @@ fun CitySearchScreen(
                 Text(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = CustomTheme.spacing.spacerM),
+                        .padding(vertical = CustomTheme.spacing.spacerM),
                     textAlign = TextAlign.Center,
                     text = stringResource(id = R.string.city_count, uiState.cityCounter),
                     style = CustomTheme.typography.labelMedium,
@@ -84,6 +85,7 @@ fun CitySearchScreen(
                     focusRequester = focusRequester,
                     modifier = Modifier
                         .fillMaxWidth()
+                        .navigationBarsPadding()
                         .imePadding()
                 )
             }
