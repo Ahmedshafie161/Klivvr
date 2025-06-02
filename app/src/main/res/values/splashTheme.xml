@@ -2,7 +2,7 @@
 <resources>
     <style name="Theme.Klivvr.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#FFFFFF</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_klivvr_launcher</item>
         <item name="postSplashScreenTheme">@style/Theme.Klivvr</item>
     </style>
 </resources>
