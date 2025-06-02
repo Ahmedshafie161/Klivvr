@@ -49,7 +49,7 @@ fun ColumnScope.CityList(
                 val strokeWidth = lineThickness.toPx()
                 val x = lineStartPadding.toPx()
                 val yStart = 0f
-                val yEnd = size.height-10.dp.toPx()
+                val yEnd = size.height - 10.dp.toPx()
 
                 drawLine(
                     color = lineColor,
@@ -60,7 +60,7 @@ fun ColumnScope.CityList(
                 drawCircle(
                     color = lineColor,
                     radius = circleRadius.toPx(),
-                    center = Offset(x, size.height-10.dp.toPx() - circleRadius.toPx())
+                    center = Offset(x, size.height - 10.dp.toPx() - circleRadius.toPx())
                 )
             }, contentPadding = PaddingValues(
             top = CustomTheme.spacing.spacerM, bottom = CustomTheme.spacing.spacerM
