@@ -12,6 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_klivvr_launcher"
         android:supportsRtl="true"
+        android:fitsSystemWindows="true"
         android:theme="@style/Theme.Klivvr"
         tools:targetApi="31">
         <activity

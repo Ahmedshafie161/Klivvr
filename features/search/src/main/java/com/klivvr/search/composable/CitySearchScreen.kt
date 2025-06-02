@@ -21,13 +21,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.klivvr.core.R
 import com.klivvr.core.commonUi.composables.EmptyScreen
 import com.klivvr.core.commonUi.composables.LoadingScreen
 import com.klivvr.core.designSystem.CustomTheme
 import com.klivvr.search.CitySearchState
 import com.klivvr.search.CitySearchViewModel
 import com.klivvr.search.model.CityUiModel
-import com.klivvr.core.R
 
 @Composable
 fun CitySearchScreen(
@@ -80,13 +80,12 @@ fun CitySearchScreen(
                         onMapRequested(city)
                     })
                 SearchBar(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .imePadding(),
                     query = uiState.searchQuery,
                     onQueryChange = viewModel::filterCities,
                     focusRequester = focusRequester,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .navigationBarsPadding()
-                        .imePadding()
                 )
             }
         }

@@ -36,10 +36,10 @@ import com.klivvr.core.R
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
 fun SearchBar(
+    modifier: Modifier = Modifier,
     query: String,
     onQueryChange: (String) -> Unit,
     focusRequester: FocusRequester,
-    modifier: Modifier = Modifier
 ) {
     var isFocused by remember { mutableStateOf(true) }
 

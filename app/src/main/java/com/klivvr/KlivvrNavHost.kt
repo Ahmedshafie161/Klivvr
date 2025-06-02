@@ -1,7 +1,6 @@
 package com.klivvr
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.NonRestartableComposable
@@ -21,13 +20,10 @@ import com.klivvr.search.composable.CitySearchScreen
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 @NonRestartableComposable
-fun KlivvrNavHost( startDestination: String = CitySearch) {
+fun KlivvrNavHost(startDestination: String = CitySearch) {
     val navController = rememberNavController()
 
-    Scaffold(
-        modifier = Modifier,
-        contentWindowInsets = WindowInsets(0, 0, 0, 0),
-    ) {
+    Scaffold(modifier = Modifier) { padding ->
         val context = LocalContext.current
         NavHost(
             modifier = Modifier.semantics { testTagsAsResourceId = true },
@@ -41,7 +37,6 @@ fun KlivvrNavHost( startDestination: String = CitySearch) {
                     }
                 )
             }
-
         }
     }
 }
