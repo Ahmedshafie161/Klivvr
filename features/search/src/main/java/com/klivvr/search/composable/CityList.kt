@@ -13,6 +13,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import com.klivvr.core.designSystem.CustomTheme
 import com.klivvr.search.model.CityUiModel
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.ImmutableMap
 import kotlin.collections.component1
 import kotlin.collections.component2
 
@@ -20,7 +22,7 @@ import kotlin.collections.component2
 @Composable
 fun ColumnScope.CityList(
     modifier: Modifier = Modifier,
-    groupedCities: Map<Char, List<CityUiModel>>,
+    groupedCities: ImmutableMap<Char, List<CityUiModel>>,
     onCitySelected: (CityUiModel) -> Unit
 ) {
 

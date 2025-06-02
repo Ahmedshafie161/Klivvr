@@ -7,6 +7,8 @@ import com.klivvr.core.util.groupByFirstLetter
 import com.klivvr.search.model.CityUiModel
 import com.klivvr.search.model.toCityUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.collections.immutable.toImmutableList
+import kotlinx.collections.immutable.toImmutableMap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,7 +34,7 @@ class CitySearchViewModel @Inject constructor(
                 _uiState.value = CitySearchState.Empty
             } else {
                 citySearcher = CitySearcher(cities)
-                val grouped = cities.groupByFirstLetter { it.name }
+                val grouped = cities.groupByFirstLetter { it.name }.toImmutableMap()
                 _uiState.value = CitySearchState.Data(
                     cities = grouped,
                     filteredCities = grouped,
@@ -57,7 +59,7 @@ class CitySearchViewModel @Inject constructor(
                 val result = citySearcher.search(query)
                 _uiState.value = currentState.copy(
                     searchQuery = query,
-                    filteredCities = result.groupByFirstLetter { it.name },
+                    filteredCities = result.groupByFirstLetter { it.name }.toImmutableMap(),
                     cityCounter = result.size
                 )
             }
