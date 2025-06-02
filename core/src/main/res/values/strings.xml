@@ -5,4 +5,5 @@
     <string name="clear_icon_desc">Clear</string>
     <string name="city_search_title">City Search</string>
     <string name="city_count"> %1$d cities</string>
+    <string name="no_cities_found">No cities found.</string>
 </resources>

@@ -11,8 +11,4 @@ val Shapes = Shapes(
     large = RoundedCornerShape(10.dp),
 )
 
-val cardShape = RoundedCornerShape(16.dp)
-val avatarShape = RoundedCornerShape(50)
-
-
 val LocalAbsShape = compositionLocalOf { Shapes }

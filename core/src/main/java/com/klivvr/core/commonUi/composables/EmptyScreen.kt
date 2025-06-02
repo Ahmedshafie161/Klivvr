@@ -9,8 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.klivvr.core.R
 
 @Composable
 fun EmptyScreen() {
@@ -20,7 +22,7 @@ fun EmptyScreen() {
             .padding(32.dp), contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "No cities found.",
+            text = stringResource(R.string.no_cities_found),
             style = MaterialTheme.typography.titleMedium,
             color = Color.Black,
             textAlign = TextAlign.Center
