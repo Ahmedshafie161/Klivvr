@@ -1,10 +1,9 @@
-/*
-package com.klivvr.city
+package com.klivvr.city.data
 
 import kotlin.math.min
 
 
-class CitySearcherBinarySearch(cities: List<CityDataModel>) {
+internal class CitySearcherBinarySearch(cities: List<CityDataModel>) {
     private val sortedCities = cities.sortedWith(
         compareBy({ it.name.lowercase() }, { it.countryCode })
     )
@@ -51,7 +50,7 @@ class CitySearcherBinarySearch(cities: List<CityDataModel>) {
         return name.length.compareTo(prefix.length)
     }
 }
-class CitySearcherHashMap(cities: List<CityDataModel>) {
+internal class CitySearcherHashMap(cities: List<CityDataModel>) {
     private val prefixMap: Map<String, List<CityDataModel>>
 
     init {
@@ -70,7 +69,7 @@ class CitySearcherHashMap(cities: List<CityDataModel>) {
         return prefixMap[prefix.lowercase()] ?: emptyList()
     }
 }
-class CitySearcherSortedHashMap(cities: List<CityDataModel>) {
+internal class CitySearcherSortedHashMap(cities: List<CityDataModel>) {
     private val prefixMap: Map<String, List<CityDataModel>>
 
     init {
@@ -92,7 +91,8 @@ class CitySearcherSortedHashMap(cities: List<CityDataModel>) {
     }
 }
 
-class CitySearcherTreeMap(cities: List<CityDataModel>) {
+/*
+internal class CitySearcherTreeMap(cities: List<CityDataModel>) {
 
     val sortedCities = cities.sortedWith(compareBy({ it.name.lowercase() }, { it.countryCode }))
     // Step 2: Group by lowercase name (keys)
@@ -109,28 +109,31 @@ class CitySearcherTreeMap(cities: List<CityDataModel>) {
 //            .flatten()
     }
 }
-fun benchmarkBinary(cities: List<CityDataModel>,prefix: String) {
+*/
+internal fun benchmarkBinary(cities: List<CityDataModel>,prefix: String) {
     // HashMap approach
     val citySearcherBinarySearch = CitySearcherBinarySearch(cities)
     measure("Binary $prefix search") {
         citySearcherBinarySearch.search(prefix)
     }
 }
-fun benchmarkTree(cities: List<CityDataModel>,prefix: String) {
+/*
+internal fun benchmarkTree(cities: List<CityDataModel>,prefix: String) {
     // HashMap approach
     val citySearcherTreeMap = com.klivvr.search.CitySearcherTreeMap(cities)
     measure("Tree $prefix search") {
         com.klivvr.search.CitySearcherTreeMap.search(prefix)
     }
 }
-fun benchmarkHashMap(cities: List<CityDataModel>,prefix: String) {
+*/
+internal fun benchmarkHashMap(cities: List<CityDataModel>,prefix: String) {
     // HashMap approach
     val hashMapSearcher = CitySearcherHashMap(cities)
     measure("HashMap $prefix search") {
         hashMapSearcher.search(prefix)
     }
 }
-fun benchmarkSortedHashMap(cities: List<CityDataModel>,prefix: String) {
+internal fun benchmarkSortedHashMap(cities: List<CityDataModel>,prefix: String) {
 
     // HashMap Sorted after search approach
     val citySearcherSortedHashMap = CitySearcherSortedHashMap(cities)
@@ -144,4 +147,4 @@ fun measure(tag: String, block: () -> Unit) {
     block()
     val duration = (System.nanoTime() - start) / 1e6
     println("$tag: ${"%.3f".format(duration)} ms")
-}*/
+}

@@ -66,13 +66,13 @@ fun ColumnScope.CityList(
             top = CustomTheme.spacing.spacerM, bottom = CustomTheme.spacing.spacerM
         ), state = columnState
     ) {
-        groupedCities.forEach { (initial, cityGroup) ->
+        groupedCities.forEach { (initial, cities) ->
             stickyHeader {
                 GroupHeader(
                     modifier = Modifier.padding(start = 0.dp), initial = initial.toString()
                 )
             }
-            items(cityGroup,key = {it.id}) { city ->
+            items(cities,key = {it.id}) { city ->
                 CityListItem(modifier = Modifier
                     .fillMaxWidth()
                     .padding(

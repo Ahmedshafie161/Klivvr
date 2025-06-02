@@ -8,7 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.InputStreamReader
 import javax.inject.Inject
 
-class CityLocalDataSource @Inject constructor(@ApplicationContext private val context: Context) :
+internal class CityLocalDataSource @Inject constructor(@ApplicationContext private val context: Context) :
     CityIDataSource {
     override suspend fun getCities(): List<CityDataModel> {
         val inputStream = context.assets.open("cities.json")

@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CityModule {
+internal object CityModule {
 
     @Provides
     @Singleton
