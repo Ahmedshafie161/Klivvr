@@ -24,7 +24,7 @@ fun GroupHeader(modifier: Modifier = Modifier, initial: String) {
             .defaultMinSize(CustomTheme.sizing.small_L, CustomTheme.sizing.small_L)
             .clip(CircleShape)
             .background(Color.White)
-            .border(2.dp, CustomTheme.colors.LightGray_5, CircleShape),
+            .border(CustomTheme.sizing.xxSmall, CustomTheme.colors.LightGray_5, CircleShape),
         contentAlignment = Alignment.Center
     ) {
         Text(

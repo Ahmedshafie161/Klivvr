@@ -14,7 +14,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.unit.dp
 import com.klivvr.core.designSystem.CustomTheme
 import com.klivvr.search.model.CityUiModel
 import kotlinx.collections.immutable.ImmutableMap
@@ -35,11 +34,10 @@ fun ColumnScope.CityList(
 
     // Define line properties
     val lineColor = CustomTheme.colors.LightGray_6
-    val lineThickness = 2.dp
-    val circleRadius = 12.dp
-    val lineStartPadding =
-        CustomTheme.sizing.small_L / 2 // horizontal offset to align with headers circles
-
+    val lineThickness = CustomTheme.sizing.xxSmall
+    val circleRadius = CustomTheme.sizing.xLSmall
+    val lineStartPadding = CustomTheme.sizing.small_L / 2
+    val endY = CustomTheme.sizing.xSmall_2
     LazyColumn(
         modifier = modifier
             .fillMaxWidth()
@@ -49,7 +47,7 @@ fun ColumnScope.CityList(
                 val strokeWidth = lineThickness.toPx()
                 val x = lineStartPadding.toPx()
                 val yStart = 0f
-                val yEnd = size.height - 10.dp.toPx()
+                val yEnd = size.height - endY.toPx()
 
                 drawLine(
                     color = lineColor,
@@ -60,7 +58,7 @@ fun ColumnScope.CityList(
                 drawCircle(
                     color = lineColor,
                     radius = circleRadius.toPx(),
-                    center = Offset(x, size.height - 10.dp.toPx() - circleRadius.toPx())
+                    center = Offset(x, size.height - endY.toPx() - circleRadius.toPx())
                 )
             }, contentPadding = PaddingValues(
             top = CustomTheme.spacing.spacerM, bottom = CustomTheme.spacing.spacerM
@@ -69,10 +67,11 @@ fun ColumnScope.CityList(
         groupedCities.forEach { (initial, cities) ->
             stickyHeader {
                 GroupHeader(
-                    modifier = Modifier.padding(start = 0.dp), initial = initial.toString()
+                    modifier = Modifier.padding(start = CustomTheme.sizing.zero),
+                    initial = initial.toString()
                 )
             }
-            items(cities,key = {it.id}) { city ->
+            items(cities, key = { it.id }) { city ->
                 CityListItem(modifier = Modifier
                     .fillMaxWidth()
                     .padding(

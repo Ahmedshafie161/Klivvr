@@ -7,7 +7,11 @@ import androidx.compose.ui.unit.dp
 
 @Immutable
 data class AbsSizing(
+    val zero: Dp = 0.dp,
+    val xxSmall: Dp = 2.dp,
     val xSmall: Dp = 4.dp,
+    val xSmall_2: Dp = 10.dp,
+    val xLSmall: Dp = 12.dp,
     val small: Dp = 40.dp,
     val small_S: Dp = 50.dp,
     val small_L: Dp = 60.dp,
