@@ -72,7 +72,7 @@ fun ColumnScope.CityList(
                     modifier = Modifier.padding(start = 0.dp), initial = initial.toString()
                 )
             }
-            items(cityGroup) { city ->
+            items(cityGroup,key = {it.id}) { city ->
                 CityListItem(modifier = Modifier
                     .fillMaxWidth()
                     .padding(

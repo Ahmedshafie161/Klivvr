@@ -19,7 +19,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,9 +29,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import com.klivvr.core.R
 import com.klivvr.core.commonUi.composables.TextInputField
 import com.klivvr.core.designSystem.CustomTheme
-import com.klivvr.core.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
@@ -70,12 +69,18 @@ fun SearchBar(
                     .focusRequester(focusRequester)
                     .onFocusChanged { isFocused = it.isFocused },
                 leadingIcon = {
-                    Icon(Icons.Default.Search, contentDescription = stringResource(id = R.string.search_icon_desc))
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = stringResource(id = R.string.search_icon_desc)
+                    )
                 },
                 trailingIcon = {
                     if (query.isNotEmpty()) {
                         IconButton(onClick = { onQueryChange("") }) {
-                            Icon(Icons.Default.Close, contentDescription = stringResource(id = R.string.clear_icon_desc))
+                            Icon(
+                                Icons.Default.Close,
+                                contentDescription = stringResource(id = R.string.clear_icon_desc)
+                            )
                         }
                     }
                 },
