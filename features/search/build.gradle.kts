@@ -54,4 +54,16 @@ dependencies {
     api(libs.androidx.hilt.navigation.compose)
     api(libs.work.manager)
     kapt(libs.hilt.android.compiler)
+
+    // Unit test dependencies
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation (libs.kotlinx.coroutines.test)
+    testImplementation (libs.turbine)
+    testImplementation (libs.mockk)
+    testImplementation (libs.junit)
+    // Mockito
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
 }

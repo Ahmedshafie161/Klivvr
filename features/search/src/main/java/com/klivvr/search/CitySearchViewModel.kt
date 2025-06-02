@@ -1,14 +1,15 @@
 package com.klivvr.search
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.klivvr.city.domain.GetCitiesUseCase
+import com.klivvr.core.IoDispatcher
+import com.klivvr.core.util.CloseableCoroutineScope
 import com.klivvr.core.util.groupByFirstLetter
 import com.klivvr.search.model.CityUiModel
 import com.klivvr.search.model.toCityUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.toImmutableMap
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,8 +18,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CitySearchViewModel @Inject constructor(
-    private val getCitiesUseCase: GetCitiesUseCase
-) : ViewModel() {
+    private val getCitiesUseCase: GetCitiesUseCase,
+    private val customScope: CloseableCoroutineScope,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
+) : ViewModel(viewModelScope = customScope) {
 
     private val _uiState = MutableStateFlow<CitySearchState>(CitySearchState.Loading)
     val uiState: StateFlow<CitySearchState> = _uiState.asStateFlow()
@@ -26,8 +29,8 @@ class CitySearchViewModel @Inject constructor(
     private lateinit var citySearcher: CitySearcher
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            val cities = getCitiesUseCase.invoke().map { it.toCityUiModel() }
+        customScope.launch(dispatcher) {
+            val cities = getCitiesUseCase().map { it.toCityUiModel() }
 
             if (cities.isEmpty()) {
                 _uiState.value = CitySearchState.Empty
@@ -54,7 +57,7 @@ class CitySearchViewModel @Inject constructor(
                 filteredCities = currentState.cities,
                 cityCounter = currentState.cities.values.sumOf { it.size })
         } else {
-            viewModelScope.launch(Dispatchers.Default) {
+            customScope.launch(dispatcher) {
                 val result = citySearcher.search(query)
                 _uiState.value = currentState.copy(
                     searchQuery = query,

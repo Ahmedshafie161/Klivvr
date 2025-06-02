@@ -3,6 +3,9 @@ package com.klivvr.search
 import com.klivvr.search.model.CityUiModel
 import kotlin.math.min
 
+/*
+data expected to be sorted by name
+ */
 class CitySearcher(private val sortedCities: List<CityUiModel>) {
     private val lowerNames = sortedCities.map { it.name.lowercase() }
 
