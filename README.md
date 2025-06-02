@@ -6,10 +6,7 @@ This project is a solution to the Klivvr Android Assignment, designed to demonst
 
 ## DEMO
 
-
 https://github.com/user-attachments/assets/d8356d9c-9d2e-4899-b6f3-06c1a036eace
-
-
 
 ## 📱 Features
 
@@ -72,10 +69,13 @@ Shared UI or core utilities can go into reusable modules like core-ui
   * **Domain** (UseCases, Models)
   * **Data** (Repositories, JSON parsing)
 
-### Design Patterns:
+### Presentation Design Patterns:
 
 * **MVVM**: with a single `UiState` class for reactive state management
 * **Repository Pattern**: abstracts data source from domain logic
+
+### Structure
+<img width="187" alt="Screenshot 2025-06-02 at 8 39 35 PM" src="https://github.com/user-attachments/assets/266259e3-5e1d-4043-a33f-8cf33497b20c" />
 
 ---
 🔍 Search Algorithm
