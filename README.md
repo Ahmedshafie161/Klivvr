@@ -4,6 +4,13 @@ This project is a solution to the Klivvr Android Assignment, designed to demonst
 
 ---
 
+## DEMO
+
+
+https://github.com/user-attachments/assets/d8356d9c-9d2e-4899-b6f3-06c1a036eace
+
+
+
 ## 📱 Features
 
 * Loads a large JSON file (\~200k city entries) on startup
