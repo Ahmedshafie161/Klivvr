@@ -30,7 +30,7 @@ fun CityListItem(modifier: Modifier = Modifier, city: CityUiModel, onClick: () -
             containerColor = Color.White
         )
     ) {
-        Row (modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically){
+        Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             countryFlags[city.countryCode]?.let {
                 Box(
                     modifier = Modifier

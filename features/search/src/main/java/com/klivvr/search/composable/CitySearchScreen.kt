@@ -45,8 +45,7 @@ fun CitySearchScreen(
                 detectTapGestures(onTap = {
                     focusManager.clearFocus() // clears focus when tapping anywhere
                 })
-            }
-    ) {
+            }) {
         when (val uiState = state.value) {
             is CitySearchState.Loading -> LoadingScreen()
             is CitySearchState.Empty -> EmptyScreen()
@@ -60,7 +59,9 @@ fun CitySearchScreen(
                     style = CustomTheme.typography.headlineLarge
                 )
                 Text(
-                    modifier = Modifier.fillMaxWidth().padding(top = 15.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 15.dp),
                     textAlign = TextAlign.Center,
                     text = "${uiState.cityCounter} cities",
                     style = CustomTheme.typography.labelMedium,

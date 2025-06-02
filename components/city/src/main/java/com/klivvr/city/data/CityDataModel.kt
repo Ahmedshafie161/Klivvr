@@ -16,6 +16,7 @@ data class CityDataModel(
 data class CoordDataModel(
     @SerializedName("lon") val longitude: Double, @SerializedName("lat") val latitude: Double
 )
+
 fun CityDataModel.toDomain(): CityDomainModel = CityDomainModel(
     name = this.name,
     countryCode = this.countryCode,
@@ -24,6 +25,5 @@ fun CityDataModel.toDomain(): CityDomainModel = CityDomainModel(
 )
 
 fun CoordDataModel.toDomain(): CoordDomainModel = CoordDomainModel(
-    longitude = this.longitude,
-    latitude = this.latitude
+    longitude = this.longitude, latitude = this.latitude
 )

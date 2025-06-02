@@ -10,6 +10,7 @@ data class CityUiModel(
     val id: Long,
     val coordinates: CoordUiModel,
 )
+
 data class CoordUiModel(val longitude: Double, val latitude: Double)
 
 fun CityDomainModel.toCityUiModel() = CityUiModel(
