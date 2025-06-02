@@ -26,10 +26,12 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.klivvr.core.commonUi.composables.TextInputField
 import com.klivvr.core.designSystem.CustomTheme
+import com.klivvr.core.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
@@ -59,7 +61,7 @@ fun SearchBar(
         ) {
             TextInputField(
                 text = query,
-                placeholder = "Search...",
+                placeholder = stringResource(id = R.string.search_placeholder),
                 onValueChange = onQueryChange,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -67,12 +69,12 @@ fun SearchBar(
                     .focusRequester(focusRequester)
                     .onFocusChanged { isFocused = it.isFocused },
                 leadingIcon = {
-                    Icon(Icons.Default.Search, contentDescription = "Search")
+                    Icon(Icons.Default.Search, contentDescription = stringResource(id = R.string.search_icon_desc))
                 },
                 trailingIcon = {
                     if (query.isNotEmpty()) {
                         IconButton(onClick = { onQueryChange("") }) {
-                            Icon(Icons.Default.Close, contentDescription = "Clear")
+                            Icon(Icons.Default.Close, contentDescription = stringResource(id = R.string.clear_icon_desc))
                         }
                     }
                 },

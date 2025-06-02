@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.klivvr.core.commonUi.composables.EmptyScreen
@@ -26,6 +26,7 @@ import com.klivvr.core.designSystem.CustomTheme
 import com.klivvr.search.CitySearchState
 import com.klivvr.search.CitySearchViewModel
 import com.klivvr.search.model.CityUiModel
+import com.klivvr.core.R
 
 @Composable
 fun CitySearchScreen(
@@ -55,7 +56,7 @@ fun CitySearchScreen(
                         .wrapContentSize()
                         .padding(start = CustomTheme.spacing.spacerM),
                     textAlign = TextAlign.Start,
-                    text = "City Search",
+                    text = stringResource(id = R.string.city_search_title),
                     style = CustomTheme.typography.headlineLarge
                 )
                 Text(
@@ -63,7 +64,7 @@ fun CitySearchScreen(
                         .fillMaxWidth()
                         .padding(top = CustomTheme.spacing.spacerM),
                     textAlign = TextAlign.Center,
-                    text = "${uiState.cityCounter} cities",
+                    text = stringResource(id = R.string.city_count, uiState.cityCounter),
                     style = CustomTheme.typography.labelMedium,
                     color = CustomTheme.colors.LightGray_4
                 )
