@@ -85,7 +85,7 @@ fun SearchBar(
                     }
                 },
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Previous,
+                imeAction = ImeAction.Done,
                 textColor = Color.Black,
                 backgroundFocusColor = Color.White,
                 borderFocusColor = Color.White,
