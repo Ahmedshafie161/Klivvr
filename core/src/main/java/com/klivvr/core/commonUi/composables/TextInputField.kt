@@ -10,6 +10,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -17,6 +19,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
 import com.klivvr.core.designSystem.CustomTheme
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
 
 @Composable
 fun TextInputField(
@@ -47,6 +51,7 @@ fun TextInputField(
     isEnabled: Boolean = true,
     isReadOnly: Boolean = false,
 ) {
+    var text by remember { mutableStateOf("") }
 
     Column {
         label?.let {
@@ -61,7 +66,11 @@ fun TextInputField(
                     placeholder, style = placeHolderStyle, color = placeholderColor
                 )
             },
-            onValueChange = onValueChange,
+            onValueChange ={
+                newText ->
+                text = newText
+                onValueChange(newText)
+                           },
             modifier = modifier,
             keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
             keyboardActions = keyboardActions,
